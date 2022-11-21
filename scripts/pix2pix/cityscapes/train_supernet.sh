@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+python train_supernet_emo.py --dataroot database/cityscapes \
+  --supernet resnetEMO \
+  --log_dir logs/pix2pix/cityscapes/supernet \
+  --restore_teacher_G_path logs/pix2pix/cityscapes/full/checkpoints/latest_net_G.pth \
+  --real_stat_path real_stat/cityscapes_A.npz \
+  --nepochs 200 --nepochs_decay 300 \
+  --save_latest_freq 25000 --save_epoch_freq 25 \
+  --teacher_ngf 64 --student_ngf 64 --teacher_netG resnet_9blocks \
+  --config_set channels-64-pix2pix \
+  --drn_path drn-d-105_ms_cityscapes.pth \
+  --cityscapes_path database/cityscapes-origin \
+  --table_path datasets/val_table.txt \
+  --eval_batch_size 2 \
+  --direction BtoA --meta_path datasets/metas/cityscapes/train1.meta \
+  --warmup_epochs 400 \
+  --evolution_epoch_freq 5 \
+  --population_size 20 \
+  --gen_num 5 \
+  --eval_cnt 1 \
+  --warmup_epochs 1 \
+  --gpu_ids 0

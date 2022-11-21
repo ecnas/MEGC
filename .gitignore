@@ -1,0 +1,9 @@
+*.pth
+*.jpg
+*.png
+*.npz
+*.pyc
+*.gz
+*.pkl
+*.zip
+*.tmp
